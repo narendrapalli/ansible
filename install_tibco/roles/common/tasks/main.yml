@@ -1,0 +1,16 @@
+---
+# Install TIBCO Base
+
+- name: Export Installable | Copy Instalable to remote temp location
+  copy: src={{ local_repo }} dest={{ remote_repo }}
+
+- name: Unarchive TRA Installable
+  unarchive: copy=no src={{ remote_repo}}/tibco/TIB_TRA_5.10.0_linux_x86_64.zip dest={{ remote_repo}}/tibco/tra
+
+- name: CONFIG | Set up TRA Install config file
+  template: src=trainstall.silent dest={{ remote_repo }}/tibco/tra/trainstall.silent
+
+- name: Install TRA | TIBCO Runtime Agent
+  command: sh cd "{{ remote_repo }}/tibco/tra"
+  command: sh TIBCOUniversalInstaller-lnx-x86-64.bin –silent –V {{ remote_repo }}/tibco/tra/trainstall.silent
+  

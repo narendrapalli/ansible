@@ -1,0 +1,12 @@
+---
+# This is a Global Variable File
+# Contains All TIBCO Installation configurations
+
+# Software Repositories
+local_repo: /home/ubuntu/tibco
+remote_repo: /home/ec2-user
+
+
+# TIBCO Base Configurations
+tibco_home_dir: /opt/tibco
+config_home: "{{ tibco_home_dir }}/config"

@@ -1,0 +1,7 @@
+---
+- name: TIBCO BW Engine Server
+  hosts: tibservers
+  gather_facts: False
+  remote_user: ec2-user
+  roles:
+    - common
